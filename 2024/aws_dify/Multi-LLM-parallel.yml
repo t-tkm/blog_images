@@ -1,0 +1,344 @@
+app:
+  description: ''
+  icon: snowman_without_snow
+  icon_background: '#D3F8DF'
+  mode: advanced-chat
+  name: Multi-LLM-parallel
+  use_icon_as_answer_icon: false
+
+kind: app
+version: 0.1.2
+
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+          - local_file
+          - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  
+  graph:
+    edges:
+      - data:
+          isInIteration: false
+          sourceType: start
+          targetType: llm
+        id: 1711527768326-source-1722696301519-target
+        selected: false
+        source: '1711527768326'
+        sourceHandle: source
+        target: '1722696301519'
+        targetHandle: target
+        type: custom
+        zIndex: 0
+      - data:
+          isInIteration: false
+          sourceType: start
+          targetType: llm
+        id: 1711527768326-source-17226964257760-target
+        selected: false
+        source: '1711527768326'
+        sourceHandle: source
+        target: '17226964257760'
+        targetHandle: target
+        type: custom
+        zIndex: 0
+      - data:
+          isInIteration: false
+          sourceType: start
+          targetType: llm
+        id: 1711527768326-source-17227289485050-target
+        selected: false
+        source: '1711527768326'
+        sourceHandle: source
+        target: '17227289485050'
+        targetHandle: target
+        type: custom
+        zIndex: 0
+      - data:
+          isInIteration: false
+          sourceType: llm
+          targetType: template-transform
+        id: 1722696301519-source-1727486533733-target
+        source: '1722696301519'
+        sourceHandle: source
+        target: '1727486533733'
+        targetHandle: target
+        type: custom
+        zIndex: 0
+      - data:
+          isInIteration: false
+          sourceType: llm
+          targetType: template-transform
+        id: 17226964257760-source-1727486533733-target
+        source: '17226964257760'
+        sourceHandle: source
+        target: '1727486533733'
+        targetHandle: target
+        type: custom
+        zIndex: 0
+      - data:
+          isInIteration: false
+          sourceType: llm
+          targetType: template-transform
+        id: 17227289485050-source-1727486533733-target
+        source: '17227289485050'
+        sourceHandle: source
+        target: '1727486533733'
+        targetHandle: target
+        type: custom
+        zIndex: 0
+      - data:
+          isInIteration: false
+          sourceType: template-transform
+          targetType: answer
+        id: 1727486533733-source-1727486641616-target
+        source: '1727486533733'
+        sourceHandle: source
+        target: '1727486641616'
+        targetHandle: target
+        type: custom
+        zIndex: 0
+    
+    nodes:
+      - data:
+          desc: ''
+          selected: false
+          title: Start
+          type: start
+          variables: []
+        dragging: false
+        height: 54
+        id: '1711527768326'
+        position:
+          x: 70.49713976718482
+          y: 383.8160879564906
+        positionAbsolute:
+          x: 70.49713976718482
+          y: 383.8160879564906
+        selected: false
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+      - data:
+          context:
+            enabled: false
+            variable_selector: []
+          desc: ''
+          memory:
+            query_prompt_template: |
+              # 議論するテーマ
+              {{#sys.query#}}
+            role_prefix:
+              assistant: ''
+              user: ''
+            window:
+              enabled: false
+              size: 50
+          model:
+            completion_params:
+              temperature: 0.7
+            mode: chat
+            name: gpt-4o
+            provider: openai
+          prompt_template:
+            - id: 705e23ff-6139-43e1-acfd-8d1eb1911177
+              role: system
+              text: 以下のインプットに回答してください。
+          selected: false
+          title: gpt-4o
+          type: llm
+          variables: []
+          vision:
+            configs:
+              detail: high
+            enabled: true
+        height: 98
+        id: '1722696301519'
+        position:
+          x: 378.5649343027309
+          y: 256.26932858056904
+        positionAbsolute:
+          x: 378.5649343027309
+          y: 256.26932858056904
+        selected: false
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+      - data:
+          context:
+            enabled: false
+            variable_selector: []
+          desc: ''
+          memory:
+            query_prompt_template: |
+              # 議論するテーマ
+              {{#sys.query#}}
+            role_prefix:
+              assistant: ''
+              user: ''
+            window:
+              enabled: false
+              size: 50
+          model:
+            completion_params:
+              temperature: 0.7
+            mode: chat
+            name: claude-3-5-sonnet-20240620
+            provider: anthropic
+          prompt_template:
+            - id: 705e23ff-6139-43e1-acfd-8d1eb1911177
+              role: system
+              text: 以下のインプットに回答して下さい。
+          selected: false
+          title: claude-3-5-sonnet
+          type: llm
+          variables: []
+          vision:
+            configs:
+              detail: high
+            enabled: true
+        height: 98
+        id: '17226964257760'
+        position:
+          x: 379.3384242880875
+          y: 383.8160879564906
+        positionAbsolute:
+          x: 379.3384242880875
+          y: 383.8160879564906
+        selected: false
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+      - data:
+          context:
+            enabled: false
+            variable_selector: []
+          desc: ''
+          memory:
+            query_prompt_template: |
+              # 議論するテーマ
+              {{#sys.query#}}
+            role_prefix:
+              assistant: ''
+              user: ''
+            window:
+              enabled: false
+              size: 50
+          model:
+            completion_params:
+              temperature: 0.7
+            mode: chat
+            name: gemini-1.5-flash-latest
+            provider: google
+          prompt_template:
+            - id: 705e23ff-6139-43e1-acfd-8d1eb1911177
+              role: system
+              text: 以下のインプットに回答して下さい。
+          selected: false
+          title: gemini-1.5-flash
+          type: llm
+          variables: []
+          vision:
+            configs:
+              detail: high
+            enabled: true
+        height: 98
+        id: '17227289485050'
+        position:
+          x: 380.46235777696234
+          y: 517.8277578261361
+        positionAbsolute:
+          x: 380.46235777696234
+          y: 517.8277578261361
+        selected: false
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+      - data:
+          desc: ''
+          selected: false
+          template: |
+            # GPT-4o
+            {{ x1 }}
+
+            # Claude 3.5 Sonnet
+            {{ x2 }}
+
+            # Gemini 1.5 Flash
+            {{ x3 }}
+          title: テンプレート
+          type: template-transform
+          variables:
+            - value_selector:
+                - '1722696301519'
+                - text
+              variable: x1
+            - value_selector:
+                - '17226964257760'
+                - text
+              variable: x2
+            - value_selector:
+                - '17227289485050'
+                - text
+              variable: x3
+        height: 54
+        id: '1727486533733'
+        position:
+          x: 680.6011332032019
+          y: 383.8160879564906
+        positionAbsolute:
+          x: 680.6011332032019
+          y: 383.8160879564906
+        selected: true
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+      - data:
+          answer: '{{#1727486533733.output#}}'
+          desc: ''
+          selected: false
+          title: 回答
+          type: answer
+          variables: []
+        height: 107
+        id: '1727486641616'
+        position:
+          x: 974.6352210800394
+          y: 383.8160879564906
+        positionAbsolute:
+          x: 974.6352210800394
+          y: 383.8160879564906
+        selected: false
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+  
+  viewport:
+    x: 158.47203156901264
+    y: 91.80676681762424
+    zoom: 0.7383379612578201
